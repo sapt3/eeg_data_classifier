@@ -10,8 +10,8 @@ for i in np.arange(n):
     sigbufs[i, :] = f.readSignal(i)
 
 list = sigbufs
-bucket_size = 5000
-overlap_count = 2500
+bucket_size = 5000     #length of sliding window
+overlap_count = 2500   #overlap
 slider = Slider(bucket_size,overlap_count)
 slider.fit(list)
 while True:
