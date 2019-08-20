@@ -2,6 +2,8 @@ import pyedflib
 import numpy as np
 from window_slider import Slider
 
+overlap_ratio = 0.5
+
 f = pyedflib.EdfReader("C:/Users/user/Desktop/Motor_Imagery_using_EEG/files/S001/S001R03.edf")
 n = f.signals_in_file
 signal_labels = f.getSignalLabels()
@@ -11,7 +13,7 @@ for i in np.arange(n):
 
 list = sigbufs
 bucket_size = 5000     #length of sliding window
-overlap_count = 2500   #overlap
+overlap_count = bucket_size*overlap_ratio   #overlap
 slider = Slider(bucket_size,overlap_count)
 slider.fit(list)
 while True:
